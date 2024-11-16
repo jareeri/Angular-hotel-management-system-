@@ -1,0 +1,39 @@
+/* Styling the container and card layout
+.container {
+  max-width: 500px;
+  margin-top: 100px;
+}
+
+.form-control:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.invalid-feedback {
+  font-size: 0.875rem;
+}
+
+.btn-outline-light {
+  width: 100%;
+  margin-top: 10px;
+} */
+/* Apply the background image and blur effect */
+.gradient-custom {
+  background-image: url("../../assets/OIP1.jpg"); /* Replace with your image URL */
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  height: 100vh; /* Ensure the section covers the full viewport height */
+}
+
+.gradient-custom::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(170, 171, 186, 0.495); /* Semi-transparent overlay */
+  backdrop-filter: blur(10); /* Apply blur effect */
+  z-index: -1; /* Make sure the blur effect stays behind content */
+}

@@ -1,0 +1,27 @@
+.booked-date .mat-calendar-body-cell-content {
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+}
+.example-custom-date-class {
+  background-color: red !important; /* You can change 'red' to any color you prefer */
+  color: white; /* Optional, to make the text visible */
+}
+/* Add this in styles.css or book.component.css */
+.example-custom-date-class {
+  background-color: red !important; /* Highlight date range */
+  color: white !important;
+  border-radius: 50%;
+}
+
+.booked-date-class {
+  background-color: rgb(194, 72, 72) !important; /* Highlight booked dates */
+  color: white !important;
+  border-radius: 50%;
+}
+
+.booked-date-class .mat-calendar-body-cell-content {
+    background-color: rgb(255, 0, 0) !important; /* Background for booked dates */
+    color: white !important;
+    border-radius: 50%;
+  }

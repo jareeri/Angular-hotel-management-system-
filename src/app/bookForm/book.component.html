@@ -1,0 +1,120 @@
+<div
+  class="container-fluid min-vh-100 d-flex justify-content-center align-items-center"
+>
+  <div class="card shadow-lg p-5 w-50">
+    <h3 class="text-center mb-4">Add Check-In</h3>
+    <form [formGroup]="itemForm" (ngSubmit)="onSubmit()">
+      <!-- Room Field -->
+      <div class="mb-3">
+        <label for="room" class="form-label">Room</label>
+        <select
+          id="room"
+          formControlName="room"
+          class="form-select"
+          (change)="getAvailableDates()"
+          [ngClass]="{
+            'is-invalid':
+              itemForm.get('room')?.invalid && itemForm.get('room')?.touched
+          }"
+        >
+          <option value="">Select room</option>
+          <option *ngFor="let room of rooms" [value]="room.roomID">
+            {{ room.name }}
+          </option>
+        </select>
+        <div
+          *ngIf="itemForm.get('room')?.invalid && itemForm.get('room')?.touched"
+          class="invalid-feedback"
+        >
+          Room is required.
+        </div>
+      </div>
+
+      <!-- Check-in Date Field using mat-datepicker -->
+      <div class="mb-3">
+        <label for="CheckInDate" class="form-label">Check-in Date</label>
+        <mat-form-field appearance="fill" class="w-100">
+          <input
+            matInput
+            [matDatepicker]="checkInPicker"
+            formControlName="CheckInDate"
+            placeholder="Select check-in date"
+            (dateChange)="checkOverlap()"
+            [ngClass]="{
+              'is-invalid':
+                itemForm.get('CheckInDate')?.invalid &&
+                itemForm.get('CheckInDate')?.touched
+            }"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="checkInPicker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker
+            [dateClass]="dateClass"
+            #checkInPicker
+          ></mat-datepicker>
+        </mat-form-field>
+        <div
+          *ngIf="
+            itemForm.get('CheckInDate')?.invalid &&
+            itemForm.get('CheckInDate')?.touched
+          "
+          class="invalid-feedback"
+        >
+          A valid check-in date is required.
+        </div>
+      </div>
+
+      <!-- Check-out Date Field using mat-datepicker -->
+      <div class="mb-3">
+        <label for="CheckOutDate" class="form-label">Check-out Date</label>
+        <mat-form-field appearance="fill" class="w-100">
+          <input
+            matInput
+            [matDatepicker]="checkOutPicker"
+            formControlName="CheckOutDate"
+            placeholder="Select check-out date"
+            (dateChange)="checkOverlap()"
+            [ngClass]="{
+              'is-invalid':
+                itemForm.get('CheckOutDate')?.invalid &&
+                itemForm.get('CheckOutDate')?.touched
+            }"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="checkOutPicker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker
+            [dateClass]="dateClass"
+            #checkOutPicker
+          ></mat-datepicker>
+        </mat-form-field>
+        <div
+          *ngIf="
+            itemForm.get('CheckOutDate')?.invalid &&
+            itemForm.get('CheckOutDate')?.touched
+          "
+          class="invalid-feedback"
+        >
+          A valid check-out date is required.
+        </div>
+      </div>
+      <div *ngIf="hasOverlap" class="text-danger text-center">
+        The selected dates overlap with an existing booking.
+      </div>
+      <br />
+      <!-- Submit Button -->
+      <div class="d-flex justify-content-center">
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="itemForm.invalid || hasOverlap"
+        >
+          Submit
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

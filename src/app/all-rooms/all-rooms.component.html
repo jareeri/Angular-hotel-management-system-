@@ -1,0 +1,60 @@
+<div class="container mt-4">
+  <h3 class="text-center mb-4">Room List</h3>
+
+  <!-- Loading and Error Messages -->
+  <div *ngIf="loading" class="d-flex justify-content-center">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  <div *ngIf="error" class="alert alert-danger text-center mt-3">
+    {{ error }}
+  </div>
+
+  <!-- Room Table -->
+  <table *ngIf="!loading && !error" class="table table-striped table-bordered">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">Room Name</th>
+        <th scope="col">Capacity</th>
+        <th scope="col">Price</th>
+        <th scope="col">Status</th>
+        <th scope="col">Options</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let room of rooms">
+        <td>{{ room.name }}</td>
+        <td>{{ room.capacity }}</td>
+        <td>{{ room.price }}</td>
+        <td>
+          <span
+            [ngClass]="{
+              'text-success': room.status === 'Available',
+              'text-danger': room.status === 'Occupied'
+            }"
+          >
+            {{ room.status }}
+          </span>
+        </td>
+        <td>
+          <button
+            type="button"
+            class="btn btn-outline-primary btn-sm m-1"
+            (click)="toUpdate(room.roomID)"
+          >
+            Edit
+          </button>
+          <button
+            type="button"
+            class="btn btn-outline-danger btn-sm m-1"
+            (click)="delete(room.roomID)"
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

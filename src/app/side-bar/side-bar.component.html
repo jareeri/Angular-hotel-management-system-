@@ -1,0 +1,31 @@
+<div class="d-flex text-white">
+  <!-- Sidebar -->
+  <div class="bg-dark text-light sidebar min-vh-100" id="sidebar">
+    <div class="sidebar-header p-3">
+      <a [routerLink]="['/home']" class="nav-icon font-weight-bold">
+        <h4 class="m-0 text-center mt-3">Hotel Menu</h4></a
+      >
+    </div>
+    <ul class="list-unstyled mt-4 d-flex flex-column">
+      <li *ngFor="let item of filteredMenu">
+        <a
+          [routerLink]="item.link"
+          [routerLinkActive]="'active'"
+          class="sidebar-link d-block p-3"
+        >
+          {{ item.label }}
+        </a>
+      </li>
+      <li class="mt-auto">
+        <a class="sidebar-link d-block p-3 bottom-content" (click)="logout()">
+          Logout
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Main content area -->
+  <div class="flex-grow-1 p-4">
+    <ng-content></ng-content>
+  </div>
+</div>

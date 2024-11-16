@@ -1,0 +1,66 @@
+<div class="container mt-4">
+  <h3 class="text-center mb-4">Book List</h3>
+
+  <!-- Loading and Error Messages -->
+  <div *ngIf="loading" class="d-flex justify-content-center">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  <div *ngIf="error" class="alert alert-danger text-center mt-3">
+    {{ error }}
+  </div>
+
+  <!-- Guest Name -->
+  <div class="text my-3">
+    <h5 class="fw-bold">Guest Name: {{ name }}</h5>
+  </div>
+
+  <!-- Book Table -->
+  <table *ngIf="!loading && !error" class="table table-striped table-bordered">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">Book ID</th>
+        <th scope="col">Room ID</th>
+        <th scope="col">Check-in Date</th>
+        <th scope="col">Check-out Date</th>
+        <th scope="col">Price</th>
+        <th scope="col">Status</th>
+        <th scope="col">Options</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let book of books">
+        <td>{{ book.bookId }}</td>
+        <td>{{ book.book.roomId }}</td>
+        <td>{{ book.book.checkInDate | date : "MM/dd/yyyy" }}</td>
+        <td>{{ book.book.checkOutDate | date : "MM/dd/yyyy" }}</td>
+        <td>{{ book.price | currency : "JOD" }}</td>
+        <td>
+          <span
+            [ngClass]="{
+              'text-success': book.status === 'Confirmed',
+              'text-warning': book.status === 'Pending',
+              'text-danger': book.status === 'Cancelled'
+            }"
+          >
+            {{ book.status }}
+          </span>
+        </td>
+        <td>
+          <button
+            type="button"
+            class="btn btn-outline-primary btn-sm m-1"
+            (click)="PrintInvoice(book.invoiceId)"
+          >
+            Print Invoice
+          </button>
+          <button type="button" class="btn btn-outline-danger btn-sm m-1">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

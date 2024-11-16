@@ -1,0 +1,77 @@
+<div class="container mt-4">
+  <h3 class="text-center mb-4 display-5 text-primary mt-100px"></h3>
+
+  <!-- Loader and error message -->
+  <div *ngIf="loading" class="d-flex justify-content-center">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  <div *ngIf="error" class="alert alert-danger text-center">
+    {{ error }}
+  </div>
+
+  <!-- Content layout after loading -->
+  <div *ngIf="!loading && !error" class="row fade-in h-50">
+    <!-- Left column with smaller statistic cards -->
+    <div class="col-md-8 h-100">
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <div class="card stat-card shadow-sm h-100 transition-all">
+            <div class="card-body">
+              <h5 class="card-title text-uppercase">Users</h5>
+              <p class="card-text display-6 fw-bold text-primary">
+                {{ statistics.userCount }}
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 mb-3">
+          <div class="card stat-card shadow-sm h-100 transition-all">
+            <div class="card-body">
+              <h5 class="card-title text-uppercase">Rooms</h5>
+              <p class="card-text display-6 fw-bold text-primary">
+                {{ statistics.roomCount }}
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 mb-3">
+          <div class="card stat-card shadow-sm h-100 transition-all">
+            <div class="card-body">
+              <h5 class="card-title text-uppercase">Guests</h5>
+              <p class="card-text display-6 fw-bold text-primary">
+                {{ statistics.guestCount }}
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 mb-3">
+          <div class="card stat-card shadow-sm h-100 transition-all">
+            <div class="card-body">
+              <h5 class="card-title text-uppercase">Bookings</h5>
+              <p class="card-text display-6 fw-bold text-primary">
+                {{ statistics.bookCount }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right column with expanded total income card -->
+    <div class="col-md-4 d-flex align-items-stretch mb-3">
+      <div
+        class="card mt-50px shadow-lg income-card text-primary h-100 w-100 transition-all"
+      >
+        <div class="card-body">
+          <h5 class="card-title text-uppercase">Total Income</h5>
+          <p class="card-text display-6 fw-bold">
+            $ {{ statistics.totalIncome | number : "1.2-2" }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,186 @@
+/* Fade-in effect for when the content loads */
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 1s ease-in forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.mt-100px {
+  margin-top: 100px;
+}
+
+.mt-50px {
+  margin-top: 50;
+}
+
+/* Transition for all cards (including hover effect) */
+.transition-all {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.transition-all:hover {
+  transform: scale(1.05); /* Enlarge the card on hover */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Add a shadow on hover */
+}
+
+/* Optional: Add more prominent hover effects for the Total Income card */
+.income-card:hover {
+  transform: scale(1.05); /* Slightly enlarge the income card */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* A stronger shadow for emphasis */
+}
+
+/* Global Styles */
+
+/* General settings for card appearance */
+.card {
+  border: none; /* Remove card borders */
+  border-radius: 8px; /* Smooth rounded corners */
+}
+
+.card-body {
+  padding: 1.5rem; /* Ensure sufficient padding inside cards */
+}
+
+/* Fade-in effect for when the content loads */
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 1s ease-in forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Transition for all cards (including hover effect) */
+.transition-all {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.transition-all:hover {
+  transform: scale(1.05); /* Enlarge the card on hover */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Add a shadow on hover */
+}
+
+/* Optional: Add more prominent hover effects for the Total Income card */
+.income-card:hover {
+  transform: scale(1.05); /* Slightly enlarge the income card */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* A stronger shadow for emphasis */
+}
+
+/* Styling for card titles and text */
+.card-title {
+  font-weight: bold;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  color: #333;
+}
+
+.card-text {
+  font-size: 1.5rem;
+  color: #007bff; /* Primary text color */
+}
+
+/* Adjustments for user statistics in the cards */
+.stat-card {
+  background-color: #f8f9fa; /* Light background for cards */
+  transition: all 0.3s ease; /* Smooth transition */
+}
+
+.stat-card:hover {
+  background-color: #e9ecef; /* Change background on hover */
+}
+
+/* Customize color for the total income card */
+.income-card {
+  background-color: #88b2df; /* Blue background for income card */
+  color: white; /* White text for the income card */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.income-card .card-body {
+  text-align: center; /* Center-align the text inside the income card */
+}
+
+.income-card .card-text {
+  font-size: 2rem; /* Larger font for income text */
+  font-weight: bold;
+  color: #fff; /* White color for the income amount */
+}
+
+/* Apply a smooth hover effect to all statistic cards */
+.stat-card:hover {
+  transform: scale(1.05); /* Slightly enlarge on hover */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+}
+
+/* Adjust the layout of the statistics cards for responsiveness */
+@media (max-width: 767px) {
+  .col-md-6 {
+    flex: 0 0 100%; /* Stack cards in one column on smaller screens */
+    max-width: 100%;
+  }
+
+  .col-md-8,
+  .col-md-4 {
+    padding: 0; /* Remove padding for better alignment */
+  }
+}
+
+/* Style for loader and error messages */
+.spinner-border {
+  width: 3rem;
+  height: 3rem;
+  border-width: 0.3rem;
+}
+
+.alert {
+  font-size: 1.1rem;
+  padding: 1.5rem;
+}
+
+/* Container styles for overall layout */
+.container {
+  max-width: 1200px;
+  margin-top: 40px; /* Space from the top */
+}
+
+.text-primary {
+  color: #007bff !important; /* Primary blue color */
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+.mb-4 {
+  margin-bottom: 1.5rem !important;
+}
+
+.display-5 {
+  font-size: 2.5rem !important;
+}
+
+/* Style adjustments for the hover effect */
+.transition-all {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.transition-all:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.bottom-content {
+  margin-top: auto; /* Pushes the logout button to the bottom */
+}
+
+/* .side-hight {
+  height: 800px;
+} */

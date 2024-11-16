@@ -1,0 +1,40 @@
+<div class="container mt-4">
+  <h3>Invoice List for Guest</h3>
+
+  <!-- Loading and Error handling -->
+  <div *ngIf="loading">Loading invoices...</div>
+  <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+
+  <!-- Invoice Table -->
+  <table *ngIf="!loading && !error" class="table">
+    <thead>
+      <tr>
+        <th>Invoice ID</th>
+        <th>Price</th>
+        <th>Check-In Date</th>
+        <th>Check-Out Date</th>
+        <th>Status</th>
+        <th>Options</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngIf="invoice">
+        <td>{{ invoice.invoiceId }}</td>
+        <td>{{ invoice.price | currency : "JOD" }}</td>
+        <td>{{ invoice.book.checkInDate | date : "MM/dd/yyyy" }}</td>
+        <td>{{ invoice.book.checkOutDate | date : "MM/dd/yyyy" }}</td>
+        <td>{{ invoice.status }}</td>
+        <td>
+          <button type="button" class="btn btn-outline-primary mx-2">
+            <!-- (click)="viewDetails(invoice)" -->
+            View Details
+          </button>
+          <button type="button" class="btn btn-outline-danger mx-2">
+            <!-- (click)="deleteInvoice(invoice.invoiceId)" -->
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

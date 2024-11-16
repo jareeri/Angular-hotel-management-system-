@@ -1,1 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.example-custom-date-class {
+  background-color: rgb(7, 154, 51) !important; /* Highlight date range */
+  color: white !important;
+  border-radius: 50%;
+}
+
+.booked-date-class {
+  /* background-color: gray !important; Highlight booked dates */
+  /* color: white !important; */
+  background-color: #ffc800 !important; /* Light gray background */
+  color: #a9a9a9 !important; /* Light gray text */
+  border: 1px solid #a9a9a9 !important; /* Light gray border */
+  cursor: not-allowed !important; /* Show a 'not-allowed' cursor */
+  pointer-events: none !important;
+  border-radius: 50% !important;
+}

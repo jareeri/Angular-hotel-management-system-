@@ -1,0 +1,48 @@
+/* General styling */
+h3 {
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.stat-card {
+  background: linear-gradient(135deg, #f0f2f5, #ffffff);
+  border: none;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: scale(1.05);
+}
+
+.card-title {
+  color: #6c757d;
+  font-size: 1rem;
+}
+
+.card-text {
+  font-size: 1.75rem;
+}
+
+.income-card {
+  background: linear-gradient(135deg, #007bff, #6f42c1);
+  border: none;
+  border-radius: 10px;
+  padding: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.income-card:hover {
+  transform: scale(1.05);
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+  .stat-card,
+  .income-card {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+}
+
+

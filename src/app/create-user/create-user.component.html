@@ -1,0 +1,196 @@
+<div
+  class="container-fluid d-flex justify-content-center align-items-center min-vh-100 bg-light"
+>
+  <div class="card shadow-lg p-4 w-50 form-container">
+    <h3 class="text-center mb-4">Create User</h3>
+    <form [formGroup]="signupForm">
+      <!-- Full Name Field -->
+      <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input
+          type="text"
+          id="name"
+          formControlName="name"
+          class="form-control"
+          [ngClass]="{
+            'is-invalid':
+              signupForm.get('name')?.invalid && signupForm.get('name')?.touched
+          }"
+        />
+        <div
+          *ngIf="
+            signupForm.get('name')?.invalid && signupForm.get('name')?.touched
+          "
+          class="invalid-feedback"
+        >
+          Name is required.
+        </div>
+      </div>
+
+      <!-- Username Field -->
+      <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input
+          type="text"
+          id="username"
+          formControlName="username"
+          class="form-control"
+          [ngClass]="{
+            'is-invalid':
+              signupForm.get('username')?.invalid &&
+              signupForm.get('username')?.touched
+          }"
+        />
+        <div
+          *ngIf="
+            signupForm.get('username')?.invalid &&
+            signupForm.get('username')?.touched
+          "
+          class="invalid-feedback"
+        >
+          Username is required.
+        </div>
+      </div>
+
+      <!-- Email Field -->
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input
+          type="email"
+          id="email"
+          formControlName="email"
+          class="form-control"
+          [ngClass]="{
+            'is-invalid':
+              signupForm.get('email')?.invalid &&
+              signupForm.get('email')?.touched
+          }"
+        />
+        <div
+          *ngIf="
+            signupForm.get('email')?.invalid && signupForm.get('email')?.touched
+          "
+          class="invalid-feedback"
+        >
+          Enter a valid email address.
+        </div>
+      </div>
+
+      <!-- Role Dropdown -->
+      <div class="mb-3">
+        <label for="roleName" class="form-label">Role</label>
+        <select
+          id="roleName"
+          formControlName="roleName"
+          class="form-select"
+          [ngClass]="{
+            'is-invalid':
+              signupForm.get('roleName')?.invalid &&
+              signupForm.get('roleName')?.touched
+          }"
+        >
+          <option value="" disabled>Select a role</option>
+          <option *ngFor="let role of roles" [value]="role.name">
+            {{ role.name }}
+          </option>
+        </select>
+        <div
+          *ngIf="
+            signupForm.get('roleName')?.invalid &&
+            signupForm.get('roleName')?.touched
+          "
+          class="invalid-feedback"
+        >
+          Role is required.
+        </div>
+      </div>
+
+      <!-- Password Field -->
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input
+          type="password"
+          id="password"
+          formControlName="password"
+          class="form-control"
+          [ngClass]="{
+            'is-invalid':
+              signupForm.get('password')?.invalid &&
+              signupForm.get('password')?.touched
+          }"
+        />
+        <div
+          *ngIf="
+            signupForm.get('password')?.invalid &&
+            signupForm.get('password')?.touched
+          "
+          class="invalid-feedback"
+        >
+          <ng-container
+            *ngIf="signupForm.get('password')?.errors?.['required']"
+          >
+            Password is required.
+          </ng-container>
+          <ng-container
+            *ngIf="signupForm.get('password')?.errors?.['minlength']"
+          >
+            Password must be at least 6 characters.
+          </ng-container>
+          <ng-container
+            *ngIf="signupForm.get('password')?.errors?.['maxlength']"
+          >
+            Password cannot exceed 24 characters.
+          </ng-container>
+          <ng-container *ngIf="signupForm.get('password')?.errors?.['pattern']">
+            Password must contain:
+            <ul>
+              <li>At least one uppercase letter</li>
+              <li>At least one lowercase letter</li>
+              <li>At least one number</li>
+              <li>
+                At least one special character (e.g., @, $, !, %, *, ?, &)
+              </li>
+            </ul>
+          </ng-container>
+        </div>
+      </div>
+
+      <!-- Confirm Password Field -->
+      <div class="mb-3">
+        <label for="confirmPassword" class="form-label">Confirm Password</label>
+        <input
+          type="password"
+          id="confirmPassword"
+          formControlName="confirmPassword"
+          class="form-control"
+          [ngClass]="{
+            'is-invalid':
+              signupForm.get('confirmPassword')?.invalid &&
+              signupForm.get('confirmPassword')?.touched
+          }"
+        />
+        <div
+          *ngIf="
+            signupForm.get('confirmPassword')?.invalid &&
+            signupForm.get('confirmPassword')?.touched
+          "
+          class="invalid-feedback"
+        >
+          Passwords must match.
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="d-flex justify-content-center mt-4">
+        <button
+          type="submit"
+          class="btn btn-primary btn-lg px-5"
+          [disabled]="signupForm.invalid"
+          (click)="createUser()"
+        >
+          Create User
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
